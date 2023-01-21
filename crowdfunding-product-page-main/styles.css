@@ -1,0 +1,187 @@
+/* ROOT */
+
+:root {
+  /* COLORS */
+  --color-primary: hsl(176, 50%, 47%);
+  --color-primary-dark: hsl(176, 72%, 28%);
+
+  --color-black: hsl(0, 0%, 0%);
+  --color-gray: hsl(0, 0%, 48%);
+
+  --bg-color-gray: hsl(0, 0%, 95%);
+  --fg-color-gray: hsl(0, 0%, 98%);
+}
+
+/* GENERAL */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* TYPOGRAPHY */
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.5rem;
+  font-family: "Commissioner", sans-serif;
+  letter-spacing: 1;
+
+  background-color: var(--bg-color-gray);
+}
+
+h1 {
+  font-size: 2.4rem;
+  margin-bottom: 2.4rem;
+}
+
+h3 {
+  margin-bottom: 2.4rem;
+}
+
+h4 {
+  margin-bottom: 0.5rem;
+}
+
+p {
+  color: var(--color-gray);
+  line-height: 1.6;
+  margin-bottom: 2.4rem;
+}
+
+.highlight {
+  color: var(--color-black);
+  font-weight: 700;
+  font-size: 3.6rem;
+  margin-bottom: 0;
+}
+
+.pledge__details {
+  font-weight: 500;
+  color: var(--color-primary);
+}
+
+/* BUTTONS */
+
+.btn__container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn {
+  padding: 2rem 5rem;
+  border-radius: 50rem;
+  border: none;
+  background-color: var(--color-primary);
+
+  font-size: inherit;
+  font-weight: 700;
+  color: white;
+}
+
+.bookmark__btn {
+  border: none;
+  background: none;
+}
+
+/* LOGO */
+
+.product__logo {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* LAYOUT */
+
+.product__container {
+  position: relative;
+}
+
+.header {
+  position: relative;
+}
+
+.hero__image {
+  position: absolute;
+  width: 100vw;
+  z-index: -1;
+}
+
+nav {
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 19rem;
+}
+
+.cards__container {
+  width: 90%;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.card__container {
+  background-color: var(--fg-color-gray);
+  border: 1.8px solid hsl(0, 0%, 93%);
+  border-radius: 10px;
+  padding: 4.2rem 2.4rem;
+}
+
+.card__container:not(:last-child) {
+  margin-bottom: 2rem;
+}
+
+.goal__progress {
+  border-bottom: 2px solid var(--color-gray);
+}
+
+.pledge__container {
+  border: 1.8px solid hsl(0, 0%, 85%);
+  border-radius: 10px;
+  padding: 2.4rem;
+}
+
+.pledge__container:not(:last-child) {
+  margin-bottom: 2rem;
+}
+
+.pledge__progress {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2.4rem;
+}
+
+.pledge__progress p {
+  display: block;
+  margin: auto 0;
+}
+
+/* UTILITIES */
+
+.u-center {
+  text-align: center;
+}
+
+.u-margin-top-md {
+  margin-top: 1.8rem;
+}
+.u-margin-bot-lg {
+  margin-bottom: 2.4rem;
+}
+
+.u-card-disable {
+  opacity: 0.5;
+}
+
+.u-card-disable .btn {
+  background-color: var(--color-gray);
+}
