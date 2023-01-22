@@ -1,13 +1,20 @@
 "use strict";
 
 const btns = document.querySelectorAll(".btn");
+
 const pledgeContainers = document.querySelectorAll(".pledge__container");
+const modalPledgeContainers = document.querySelectorAll(
+  ".modal-pledge__container"
+);
+
+const pledges = document.querySelectorAll(".pledges");
+const radioPledges = document.querySelectorAll(".radio__pledges");
+
+const pledgeInputs = document.querySelectorAll(".pledge__input");
+
 const funds = document.querySelector(".funds");
 const backers = document.querySelector(".backers");
 const deadline = document.querySelector(".deadline");
-const bambooPledges = document.querySelector(".bamboo__pledges");
-const blackPledges = document.querySelector(".black__pledges");
-const mahoganyPledges = document.querySelector(".mahogany__pledges");
 
 const Product = {
   currentFunds: 89914,
@@ -15,11 +22,13 @@ const Product = {
   currentDeadline: 56,
 };
 
-const Pledges = {
-  pledge1: 101,
-  pledge2: 64,
-  pledge3: 0,
-};
+const Pledges = [
+  { id: 0, name: "bamboo", pledges: 101 },
+  { id: 1, name: "black", pledges: 64 },
+  { id: 2, name: "mahogany", pledges: 0 },
+];
+
+// make pledge radio input checked when div is clicked
 
 // when a pledge is made update all classes
 
@@ -33,30 +42,20 @@ const linkElements = () => {
   funds.textContent = `$${Product.currentFunds}`;
   backers.textContent = `${Product.currentBackers}`;
   deadline.textContent = `${Product.currentDeadline}`;
-
-  bambooPledges.textContent = `${Pledges.pledge1}`;
-  blackPledges.textContent = `${Pledges.pledge2}`;
-  mahoganyPledges.textContent = `${Pledges.pledge3}`;
 };
 
-// const isPledgeDisabled = (elements) => {
-//   elements.forEach((element, index) => {
-//     let key = "pledge" + (index + 1);
-//     element.setAttribute("data-key", key);
-//     let dataKey = element.getAttribute("data-key");
+const initPledges = (elements) => {
+  Pledges.forEach((pledge) => {
+    elements.forEach((element, index) => {
+      if (pledge.id === index) {
+        element.textContent = `${pledge.pledges}`;
+      }
+    });
+  });
+};
 
-//     for (let key in Pledges) {
-//       if (dataKey === key && Pledges[key] === 0) {
-//         element.classList.add("u-card-disable");
-//       }
-//     }
-
-//     if (element.classList.contains("u-card-disable")) {
-//       let button = element.querySelector("button");
-//       button.innerText = "Out of Stock";
-//     }
-//   });
-// };
+initPledges(pledges);
+initPledges(radioPledges);
 
 const disablePledge = (element) => {
   element.classList.toggle("u-card-disable", true);
@@ -68,20 +67,51 @@ const updateButtonText = (element) => {
 };
 
 const isPledgeDisabled = (elements) => {
-  elements.forEach((element, index) => {
-    let key = `pledge${index + 1}`;
-
-    element.dataset.key = key;
-    let dataKey = element.dataset.key;
-
-    for (const [pledgeKey, pledgeValue] of Object.entries(Pledges)) {
-      if (dataKey === pledgeKey && pledgeValue === 0) {
+  Pledges.forEach((pledge) => {
+    elements.forEach((element, index) => {
+      if (index === pledge.id && pledge.pledges === 0) {
         disablePledge(element);
         updateButtonText(element);
       }
-    }
+    });
+  });
+};
+
+// make pledge radio input checked when div is clicked
+
+// make action container visible when radio is checked
+
+const handleChange = (event) => {
+  if (!event.target.checked) {
+    console.log("unchecked");
+    container.classList.remove("active__border");
+    actionSection.classList.add("hidden");
+  }
+};
+
+const selectPledge = (containers) => {
+  let selected;
+
+  containers.forEach((container) => {
+    let input = container.querySelector("input");
+    let actionSection = container.querySelector(".action__container");
+
+    container.addEventListener("click", () => {
+      if (selected) {
+        selected.container.classList.remove("active__border");
+        selected.actionSection.classList.add("hidden");
+      }
+
+      input.checked = true;
+      container.classList.add("active__border");
+      actionSection.classList.remove("hidden");
+      selected = { container, actionSection };
+    });
   });
 };
 
 linkElements();
 isPledgeDisabled(pledgeContainers);
+isPledgeDisabled(modalPledgeContainers);
+
+selectPledge(modalPledgeContainers);

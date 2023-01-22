@@ -7,6 +7,7 @@
 
   --color-black: hsl(0, 0%, 0%);
   --color-gray: hsl(0, 0%, 48%);
+  --color-gray-light: hsl(0, 0%, 75%);
 
   --bg-color-gray: hsl(0, 0%, 95%);
   --fg-color-gray: hsl(0, 0%, 98%);
@@ -90,6 +91,10 @@ p {
   background: none;
 }
 
+.action__btn {
+  padding: 1.6rem 2.5rem;
+}
+
 /* LOGO */
 
 .product__logo {
@@ -154,6 +159,62 @@ nav {
   margin-bottom: 2rem;
 }
 
+.input__container {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.input__container p {
+  margin: 0;
+}
+
+.action__container {
+  text-align: center;
+  border-top: 1px solid var(--color-gray);
+}
+
+.action__container p {
+  margin-top: 3rem;
+}
+
+.action-btn__container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pledge__label {
+  display: flex;
+  width: 45%;
+  gap: 1rem;
+  padding: 1.6rem 2.75rem;
+  border: 1px solid var(--color-gray-light);
+  border-radius: 50rem;
+  font-weight: 700;
+  color: var(--color-gray-light);
+}
+
+.pledge__input {
+  border: none;
+  font-size: inherit;
+  font-weight: 700;
+  background-color: inherit;
+  width: 75%;
+}
+
+.pledge__input::placeholder {
+  opacity: 1;
+}
+
+/* .pledge__input:active,
+.pledge__input:focus {
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+} */
+
 .pledge__progress {
   display: flex;
   gap: 1rem;
@@ -184,4 +245,16 @@ nav {
 
 .u-card-disable .btn {
   background-color: var(--color-gray);
+}
+
+.active__border {
+  border: 2px solid var(--color-primary);
+}
+
+.hidden {
+  display: none;
+}
+
+.display {
+  display: block;
 }
