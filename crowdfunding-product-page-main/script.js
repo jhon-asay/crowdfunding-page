@@ -28,17 +28,15 @@ const Pledges = [
   { id: 2, name: "mahogany", pledges: 0 },
 ];
 
-// make pledge radio input checked when div is clicked
-
 // when a pledge is made update all classes
 
 // make progress bar and add functionality
 
-// menu display navbar
+// menu display modal navbar
 
-// pledge cards display modals
+// make buttons display modals
 
-const linkElements = () => {
+const initProgress = () => {
   funds.textContent = `$${Product.currentFunds}`;
   backers.textContent = `${Product.currentBackers}`;
   deadline.textContent = `${Product.currentDeadline}`;
@@ -77,40 +75,41 @@ const isPledgeDisabled = (elements) => {
   });
 };
 
-// make pledge radio input checked when div is clicked
+const addSelection = (input, container, actionSection) => {
+  input.checked = true;
+  container.classList.add("active__border");
+  actionSection.classList.remove("hidden");
+};
 
-// make action container visible when radio is checked
-
-const handleChange = (event) => {
-  if (!event.target.checked) {
-    console.log("unchecked");
-    container.classList.remove("active__border");
-    actionSection.classList.add("hidden");
-  }
+const removeSelection = (container, actionSection) => {
+  container.classList.remove("active__border");
+  actionSection.classList.add("hidden");
 };
 
 const selectPledge = (containers) => {
-  let selected;
+  let prevPledge;
 
   containers.forEach((container) => {
     let input = container.querySelector("input");
     let actionSection = container.querySelector(".action__container");
+    let pledges = container.querySelector(".radio__pledges");
+    const pledgeInStock = pledges.textContent !== "0";
 
     container.addEventListener("click", () => {
-      if (selected) {
-        selected.container.classList.remove("active__border");
-        selected.actionSection.classList.add("hidden");
+      if (prevPledge && pledgeInStock) {
+        removeSelection(prevPledge.container, prevPledge.actionSection);
       }
 
-      input.checked = true;
-      container.classList.add("active__border");
-      actionSection.classList.remove("hidden");
-      selected = { container, actionSection };
+      if (pledgeInStock) {
+        addSelection(input, container, actionSection);
+        prevPledge = { container, actionSection };
+      }
     });
   });
 };
 
-linkElements();
+initProgress();
+
 isPledgeDisabled(pledgeContainers);
 isPledgeDisabled(modalPledgeContainers);
 

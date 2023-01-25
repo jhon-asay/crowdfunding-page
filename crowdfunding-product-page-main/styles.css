@@ -32,7 +32,6 @@ html {
 body {
   font-size: 1.5rem;
   font-family: "Commissioner", sans-serif;
-  letter-spacing: 1;
 
   background-color: var(--bg-color-gray);
 }
@@ -93,6 +92,7 @@ p {
 
 .action__btn {
   padding: 1.6rem 2.5rem;
+  font-size: 1.4rem;
 }
 
 /* LOGO */
@@ -159,6 +159,10 @@ nav {
   margin-bottom: 2rem;
 }
 
+.modal-pledge__container .pledge__progress {
+  margin: 0;
+}
+
 .input__container {
   display: flex;
   align-items: center;
@@ -171,6 +175,7 @@ nav {
 }
 
 .action__container {
+  margin-top: 3rem;
   text-align: center;
   border-top: 1px solid var(--color-gray);
 }
@@ -186,9 +191,9 @@ nav {
 
 .pledge__label {
   display: flex;
-  width: 45%;
+  width: 40%;
   gap: 1rem;
-  padding: 1.6rem 2.75rem;
+  padding: 1.6rem 2.25rem;
   border: 1px solid var(--color-gray-light);
   border-radius: 50rem;
   font-weight: 700;
@@ -207,14 +212,6 @@ nav {
   opacity: 1;
 }
 
-/* .pledge__input:active,
-.pledge__input:focus {
-  border: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-} */
-
 .pledge__progress {
   display: flex;
   gap: 1rem;
@@ -224,6 +221,31 @@ nav {
 .pledge__progress p {
   display: block;
   margin: auto 0;
+}
+
+/* MODAL NAVBAR */
+
+.links__container {
+  background-color: var(--fg-color-gray);
+  border: 1.8px solid hsl(0, 0%, 93%);
+  border-radius: 10px;
+  /* padding: 4.2rem 2.4rem; */
+}
+
+.nav__links {
+  list-style: none;
+  padding: 3rem;
+}
+
+.nav__links:not(:last-child) {
+  border-bottom: 2px solid var(--bg-color-gray);
+}
+
+.nav__link {
+  text-decoration: none;
+  color: var(--color-black);
+  font-weight: 500;
+  font-size: 1.8rem;
 }
 
 /* UTILITIES */
@@ -248,7 +270,7 @@ nav {
 }
 
 .active__border {
-  border: 2px solid var(--color-primary);
+  border: 3px solid var(--color-primary);
 }
 
 .hidden {
